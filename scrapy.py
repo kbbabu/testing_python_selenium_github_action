@@ -5,7 +5,8 @@ from webdriver_manager.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
-chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+
 chrome_options = Options()
 options = [
     "--headless",
@@ -17,12 +18,13 @@ options = [
     "--disable-dev-shm-usage"
 ]
 for option in options:
-  chrome_options.add_arguments(option)
+    chrome_options.add_argument(option)
 
-driver = webdriver.Chrome(service = chrome_service, options = chrome_options)
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.get('http://nytimes.com')
 print(driver.title)
+
 driver.stop_client()
 driver.close()
 driver.quit()
