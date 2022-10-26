@@ -1,31 +1,29 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: scrapye
-
+name: scrape
 on:
   workflow_dispatch:
 jobs:
-  scrapye:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out this repo
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.9"
+          python-version: '3.9'
       - name: Installed package list
         run: apt list --installed
       - name: Remove Chrome
         run: sudo apt purge google-chrome-stable
       # Chromium is already installed!
-      - name: Install software
-        run: sudo apt install -y chromium-browser
+      # - name: Install software
+      #   run: sudo apt install -y chromium-browser
       - name: Install all necessary packages
-        run: pip install requests beautifulsoup4 pandas webdriver-manager selenium==3.9
-      - name: Run scraping script
+        run: pip install requests beautifulsoup4 pandas webdriver-manager selenium
+      - name: Run the scraping script
         run: python scrapy.py
       
     
