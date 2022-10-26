@@ -4,9 +4,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 #from webdriver_manager.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
-#from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service as ChromiumService
 
-driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
 
 chrome_options = Options()
 options = [
@@ -29,6 +29,7 @@ print(driver.title)
 driver.stop_client()
 driver.close()
 driver.quit()
+
 
 
 
