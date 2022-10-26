@@ -23,7 +23,7 @@ jobs:
       - name: Install a new Chromium
         run: sudo apt install -y chromium-browser
       - name: Install all necessary packages
-        run: pip install requests beautifulsoup4 pandas webdriver-manager selenium setuptools
+        run: pip install requests beautifulsoup4 pandas webdriver-manager selenium==3.9 setuptools packaging
       - name: Run the scraping script
         run: python scrapy.py
       
