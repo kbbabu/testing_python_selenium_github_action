@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: scrape
+name: Selenium on github action
 on:
   workflow_dispatch:
 jobs:
@@ -18,12 +18,12 @@ jobs:
         run: apt list --installed
       - name: Remove Chrome
         run: sudo apt purge google-chrome-stable
-      - name: Remove default Chromium
-        run: sudo apt purge chromium-browser
-      - name: Install a new Chromium
-        run: sudo apt install -y chromium-browser
+      #- name: Remove default Chromium
+      #  run: sudo apt purge chromium-browser
+      #- name: Install a new Chromium
+      #  run: sudo apt install -y chromium-browser
       - name: Install all necessary packages
-        run: pip install requests beautifulsoup4 pandas webdriver-manager selenium==4.0 setuptools packaging
+        run: pip install requests chromedriver-autoinstaller beautifulsoup4 pandas webdriver-manager selenium==3.9 setuptools packaging
       - name: Run the scraping script
         run: python scrapy.py
       
